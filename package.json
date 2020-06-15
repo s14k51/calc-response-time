@@ -1,0 +1,26 @@
+{
+  "name": "calc-response-time",
+  "description": "Calculates roundtrip time of a service call. Returns response time in seconds or milliseconds.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "s14k51 <s14k51@gmail.com>",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/s14k51/calc-response-time.git"
+  },
+  "homepage": "https://github.com/s14k51/calc-response-time#readme",
+  "bugs": {
+    "url": "https://github.com/s14k51/calc-response-time/issues"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.0",
+    "jest": "^26.0.1"
+  }
+}
