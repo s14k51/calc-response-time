@@ -1,7 +1,7 @@
 {
   "name": "calc-response-time",
   "description": "Calculates roundtrip time of a service call. Returns response time in seconds or milliseconds.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "author": "s14k51 <s14k51@gmail.com>",
   "main": "index.js",

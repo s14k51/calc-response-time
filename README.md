@@ -11,9 +11,9 @@ const start = initTimer();
 
 // do something
 
-const t = getResponseTime(start);
+const t = getResponseTime(start, { units: "s" }); // default is `ms`
 
 // Examples
-// 1.3 sec
-// 452 ms
+// 1.054; // for `s`
+// 1054; // for `ms`
 ```

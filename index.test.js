@@ -1,6 +1,6 @@
 const { initTimer, getResponseTime } = require(".");
 
-it("Test call", async () => {
+it("Test call in ms", async () => {
   const promise = new Promise((resolve) => {
     setTimeout(() => {
       resolve();
@@ -10,5 +10,18 @@ it("Test call", async () => {
   await promise;
   const t = getResponseTime(start);
 
-  console.log(t); // 1.05 sec or 1.06 sec - depends on the execution
+  console.log(t); // ~1054
+});
+
+it("Test call in s", async () => {
+  const promise = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 1054);
+  });
+  const start = initTimer();
+  await promise;
+  const t = getResponseTime(start, { units: "s" });
+
+  console.log(t); // ~1.054
 });

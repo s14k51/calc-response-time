@@ -1,8 +1,8 @@
 const NS_IN_MS = 10 ** 6;
 const MS_IN_S = 10 ** 3;
-const defaultPrecision = 2;
+const precision = 3;
 
-function fixPrecision(num, precision) {
+function fixPrecision(num) {
   return parseFloat(num.toFixed(precision));
 }
 
@@ -20,7 +20,7 @@ function toMS(ns) {
   }
 }
 
-function toS(ms, precision) {
+function toS(ms) {
   if (ms === 0) {
     return 0;
   }
@@ -29,20 +29,22 @@ function toS(ms, precision) {
     return 1;
   }
 
-  return fixPrecision(ms / MS_IN_S, precision);
+  return fixPrecision(ms / MS_IN_S);
 }
 
-function getResponseTime(start, precision = defaultPrecision) {
+function getResponseTime(start, options = {}) {
   const diff = process.hrtime(start);
   const [seconds, ns] = diff;
+  const { units = "ms" } = options;
   const ms = toMS(ns);
 
-  if (seconds === 0) {
-    return ms === MS_IN_S ? "1 sec" : `${ms} ms`;
+  if (units === "s") {
+    return fixPrecision(seconds + toS(ms));
   }
 
-  const sec = fixPrecision(seconds + toS(ms, precision), precision);
-  return `${sec} sec`;
+  const s_in_ms = seconds * MS_IN_S;
+
+  return parseInt(s_in_ms + ms);
 }
 
 function initTimer() {
